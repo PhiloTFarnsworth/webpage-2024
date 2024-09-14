@@ -1,0 +1,9 @@
+body {
+    margin: 20px;
+    padding: 0;
+    height: calc(100dvh - 40px);
+    width: calc(100dvw - 40px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
