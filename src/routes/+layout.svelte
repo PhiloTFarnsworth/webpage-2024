@@ -10,9 +10,9 @@
 	export let theme: 'coder' | 'beach' | 'winter' = 'coder';
 	// export let customPalette = ['#FF00FF'];
 	export let fonts = {
-		"coder": '"Lucida Console", Courier, monospace;',
-		"beach": '"Noto Sans", sans serif',
-		"winter": "courier"
+		"coder": 'Orbitron',
+		"beach": 'Warnes',
+		"winter": "AmaticSC"
 	}
 
 	export let floaters: Array<any>;
@@ -67,10 +67,113 @@
 	}
 
 	.main-slot-viewer {
-		height: calc(100% - 160px);
+		height: calc(100% - 140px);
 		display: flex;
 		justify-content: center;
-		align-items: center;
-		border-radius: 10px;
+		overflow: auto;
+		padding: 20px 10px;
 	}
+
+	@font-face {
+        font-family: 'AmaticSC';
+        font-style: normal;
+        src: url("/fonts/AmaticSC-Bold.ttf");
+    }
+
+	@font-face {
+        font-family: 'Caveat';
+        font-style: normal;
+        src: url("/fonts/Caveat-VariableFont_wght.ttf");
+    }
+
+	@font-face {
+        font-family: 'Cinzel';
+        font-style: normal;
+        src: url("/fonts/cinzel-VariableFont_wght.ttf");
+    }
+
+	@font-face {
+        font-family: 'Fascinate';
+        font-style: normal;
+        src: url("/fonts/FascinateInline-Regular.ttf");
+    }
+
+	@font-face {
+        font-family: 'JF Shadow';
+        font-style: normal;
+        src: url("/fonts/JacquesFrancoisShadow-Regular.ttf");
+    }
+
+	@font-face {
+        font-family: 'Kolker Brush';
+        font-style: normal;
+        src: url("/fonts/KolkerBrush-Regular.ttf");
+    }
+
+	@font-face {
+        font-family: 'Lacquer';
+        font-style: normal;
+        src: url("/fonts/Lacquer-Regular.ttf");
+    }
+
+	@font-face {
+        font-family: 'Noto Sans';
+        font-style: normal;
+        src: url("/fonts/NotoSans-VariableFont_wdth,wght.ttf");
+    }
+
+	@font-face {
+        font-family: 'Orbitron';
+        font-style: normal;
+        src: url("/fonts/Orbitron-VariableFont_wght.ttf");
+    }
+
+	@font-face {
+        font-family: 'Plaster';
+        font-style: normal;
+        src: url("/fonts/Plaster-Regular.ttf");
+    }
+
+	@font-face {
+        font-family: 'Playwright CU';
+        font-style: normal;
+        src: url("/fonts/PlaywriteCU-VariableFont_wght.ttf");
+    }
+
+	@font-face {
+        font-family: 'Protest Guerrilla';
+        font-style: normal;
+        src: url("/fonts/ProtestGuerrilla-Regular.ttf");
+    }
+
+	@font-face {
+        font-family: 'Broken Fax';
+        font-style: normal;
+        src: url("/fonts/RubikBrokenFax-Regular.ttf");
+    }
+
+	@font-face {
+        font-family: 'Sankofa Display';
+        font-style: normal;
+        src: url("/fonts/SankofaDisplay-Regular.ttf");
+    }
+
+	@font-face {
+        font-family: 'Sofadi One';
+        font-style: normal;
+        src: url("/fonts/SofadiOne-Regular.ttf");
+    }
+
+	@font-face {
+        font-family: 'Warnes';
+        font-style: normal;
+        src: url("/fonts/Warnes-Regular.ttf");
+    }
+
+	@font-face {
+        font-family: 'Wavefont';
+        font-style: normal;
+        src: url("/fonts/Wavefont-VariableFont_ROND,YELA,wght.ttf");
+    }
+
 </style>

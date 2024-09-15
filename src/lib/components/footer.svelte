@@ -6,12 +6,9 @@
 	}
 
 	export let theme: 'coder' | 'beach' | 'winter'
-	export function toggleTheme(newTheme: 'coder' | 'beach' | 'winter') {
-		theme = newTheme
-	}
 </script>
 
-<footer style={"--footer-bg:" + hexToRGB(palettes[theme][9], .8)}>
+<footer style={"--footer-bg:" + hexToRGB(palettes[theme][9], .8) + "; --button-bg:" + palettes[theme][1]}>
 	<div class="footer-links">
 		<a href="https://github.com/PhiloTFarnsworth">
 			<span aria-label="My Github" class="fa-brands fa-github icon"></span>
@@ -21,11 +18,22 @@
 		</a>
 	</div>
 
-	<div>
-		<button on:click={() => toggleTheme("coder")}><svg class="icon"><use href={'#fa-symbol-terminal'}></use></svg></button>
-		<button on:click={() => toggleTheme("beach")}><svg class="icon"><use href={'#fa-symbol-umbrella-beach'}></use></svg></button>
-		<button on:click={() => toggleTheme("winter")}><svg class="icon"><use href={'#fa-symbol-snowman'}></use></svg></button>
-	</div>
+
+	<form>
+		<select
+			bind:value={theme}
+		>
+			<option value="coder">
+				Coder &#xf120
+			</option>
+			<option value="beach">
+				Beach &#xf5ca
+			</option>
+			<option value="winter">
+				Winter &#xf7d0
+			</option>
+		</select>
+	</form>
 
 	<p>
 		<span class="fa-regular fa-copyright icon-small"></span> 2024{thisYear() !== 2024
@@ -35,6 +43,29 @@
 </footer>
 
 <style>
+	
+	@font-face {
+		font-family: 'Font Awesome';
+        font-style: normal;
+        src: url("/fonts/fa-solid-900.woff2");
+	}
+
+	select {
+		height: 45px;
+		width: 100px;
+		font-family: "Font Awesome";
+		color: var(--button-bg);
+		border-radius: 10px;
+	}
+
+	option {
+		font-family: "Font Awesome";
+	}
+
+	option:not(:checked) {
+		color: black
+	}
+
 	footer {
 		display: flex;
 		justify-content: space-between;

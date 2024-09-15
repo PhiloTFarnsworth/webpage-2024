@@ -39,5 +39,6 @@
 		position: absolute;
 		height: 100dvh;
 		width: 100dvw;
+        overflow: hidden;
 	}
 </style>
