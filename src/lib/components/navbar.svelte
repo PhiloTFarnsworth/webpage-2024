@@ -11,6 +11,13 @@
 </nav>
 
 <style>
+	nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-items: center;
+	}
+
 	nav a {
 		font-size: x-large;
 	}

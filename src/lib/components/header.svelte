@@ -15,7 +15,7 @@
 		<use href={'#fa-symbol-' + theme.themeIcon}></use>
 	</svg>
 	<div class="nav-combo">
-		<h1>Welcome to Michael's Site!</h1>
+		<h1>Mike G '24</h1>
 		<Navbar />
 	</div>
 	<svg class="icon" style={'--icon-color:' + theme.background}>
