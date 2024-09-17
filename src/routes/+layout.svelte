@@ -111,7 +111,7 @@
 >
 	<Header />
 
-	<div class="main-slot-viewer" style={'--content-bg:' + hexToRGB(theme.contentBackground, 0.8)}>
+	<div class="main-slot-viewer" style={'--content-bg:' + hexToRGB(theme.contentBackground, 0.5)}>
 		<slot></slot>
 	</div>
 
