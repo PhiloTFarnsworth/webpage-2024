@@ -24,3 +24,7 @@ export type floaterObject = {
     opacityDuration: number,
     opacityIntensity: number
 }
+
+export type themeConfigType = {
+    
+}

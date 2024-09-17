@@ -1,0 +1,73 @@
+{
+    "id": 0,
+    "name": "coder",
+    "themeIcon": "laptop-code",
+    "background": "#111111",
+    "contentBackground": "#4A646C",
+    "handleColor": "#39FF14",
+    "textColor": "#FFFFFF",
+    "font": "Orbitron",
+    "fontSize": 16,
+    "styles": [
+        {
+            "id": 0,
+            "name": "code-splosion",
+            "icons": [
+                "code",
+                "virus",
+                "bug",
+                "code-pull-request",
+                "code-fork",
+                "code-merge"
+            ],
+            "size": [75, 200],
+            "density": 50,
+            "top": [0, "max"],
+            "left": [0, "max"],
+            "colors": [
+                "#000000", 
+                "#36454F", 
+                "#2C3539", 
+                "#2F4F4F", 
+                "#191970", 
+                "#301934", 
+                "#4A646C", 
+                "#7DF9FF", 
+                "#39FF14", 
+                "#00FF00" 
+            ],
+            "initialOpacity": [10, 60],
+            "border": "",
+            "outline": "",
+            "boxshadow": "",
+            "horizontalDuration": [2, 10],
+            "horizontalDirection": "random",
+            "verticalDuration": [2, 10],
+            "verticalDirection": "",
+            "spinDuration": [3, 20],
+            "pushLeftDuration": [1, 2],
+            "pushLeftForce": [0, 50],
+            "pushDownDuration": [1, 2],
+            "pushDownForce": [0, 50],
+            "growDuration": [3, 20],
+            "growScale": [0.5, 1.5],
+            "opacityFlareDuration": [0, 5],
+            "opacityFlareIntensity": [10, 60]
+        },
+        {
+            "id": 1,
+            "name": "terminal",
+            "icons": ["terminal"],
+            "density": 1,
+            "size": 200,
+            "top": 100,
+            "left": 25,
+            "colors": [ 
+                "#39FF14"  
+            ],
+            "initialOpacity": 90,
+            "opacityFlareDuration": 1.5,
+            "opacityFlareIntensity": 0
+        }
+    ]
+}

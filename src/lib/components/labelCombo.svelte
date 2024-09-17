@@ -11,5 +11,11 @@
 <style>
     .form-group {
         padding-bottom: 5px;
+        margin-bottom: 5px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
     }
 </style>

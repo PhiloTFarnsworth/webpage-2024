@@ -3,57 +3,122 @@
 	import DynamicFontAwesome from '$lib/components/dynamicFontAwesome.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import Header from '$lib/components/header.svelte';
-	import { generateRandomFloater } from '$lib/utilities/floaters';
-	import { themeIcons } from '$lib/utilities/iconography';
-	import { hexToRGB, palettes } from '$lib/utilities/palettes';
+	import coder from '$lib/assets/coder.json';
+	import winter from '$lib/assets/winter.json';
+	import beach from '$lib/assets/beach.json';
+	import { hexToRGB } from '$lib/utilities/palettes';
+	import { setContext } from 'svelte';
+	import { writable } from 'svelte/store';
 
-	export let theme: 'coder' | 'beach' | 'winter' = 'coder';
-	// export let customPalette = ['#FF00FF'];
-	export let fonts = {
-		"coder": 'Orbitron',
-		"beach": 'Warnes',
-		"winter": "AmaticSC"
+	const themeContext = writable();
+	$: themeContext.set({ themes: [coder, winter, beach], theme: winter });
+
+	setContext('themeContext', themeContext);
+
+	export let themes;
+	export let theme;
+	themeContext.subscribe((value) => {
+		themes = value?.themes;
+		theme = value?.theme
+	});
+
+	function themeUpdate(themeConfig) {
+		themeContext.update((s) => {
+			return {
+				themes: s.themes.map((t) => {
+					if (t.id !== themeConfig.id) {
+						return t;
+					}
+					return themeConfig;
+				}),
+				theme: themeConfig.id === s.theme.id ? themeConfig : s.theme
+			};
+		});
 	}
 
-	export let floaters: Array<any>;
-	export let uniques: Array<string>;
-	export let innerHeight: number;
-	export let innerWidth: number;
+	function themeChange(themeConfig) {
+		themeContext.update((s) => {
+			return {
+				themes: s.themes,
+				theme: themeConfig
+			};
+		});
+	}
 
-	let floatCount: number = 50;
+	function styleUpdate(detail) {
+		themeContext.update((u) => {
+			return {
+				themes: u.themes.map((t) => {
+					if (t.id !== detail.themeID) {
+						return t;
+					}
+					return {
+						...t,
+						styles: [
+							...t.styles.map((s) => {
+								if (s.id !== detail.style.id) {
+									return s;
+								}
+								return detail.style;
+							})
+						]
+					};
+				}),
+				theme:
+					detail.themeID !== u.theme.id
+						? u.theme
+						: {
+								...u.theme,
+								styles: [
+									...u.theme.styles.map((s) => {
+										if (s.id !== detail.style.id) {
+											return s;
+										}
+										return detail.style;
+									})
+								]
+							}
+			};
+		});
+	}
 
-	$: floaters = Array.from({ length: floatCount }).map(() => {
-		let color: string = palettes[theme][Math.floor(Math.random() * palettes[theme].length)];
-		let icon: string = themeIcons[theme][Math.floor(Math.random() * themeIcons[theme].length)];
-		return generateRandomFloater(
-			icon,
-			color,
-			theme,
-			innerWidth ? innerWidth : 1000,
-			innerHeight ? innerHeight : 1000
-		);
-	});
-	$: uniques = themeIcons[theme];
+	$: console.log(theme)
+	$: console.log(theme.font)
 </script>
 
-<svelte:window bind:innerHeight={innerHeight} bind:innerWidth={innerWidth} />
+<svelte:window
+	on:configChange={(e) => {
+		themeUpdate(e.detail);
+	}}
+	on:themeChange={(e) => {
+		themeChange(e.detail);
+	}}
+	on:styleChange={(e) => {
+		styleUpdate(e.detail);
+	}}
+/>
 
-<i data-fa-symbol={'fa-symbol-snowman'} class={'fa-solid fa-snowman'}></i>
-<i data-fa-symbol={'fa-symbol-umbrella-beach'} class={'fa-solid fa-umbrella-beach'}></i>
-<i data-fa-symbol={'fa-symbol-terminal'} class={'fa-solid fa-terminal'}></i>
+<DynamicFontAwesome />
 
-<DynamicFontAwesome bind:uniques />
+<Background />
 
-<Background bind:floaters />
+<div
+	class="site-content"
+	style={'--site-font:' +
+		theme.font +
+		'; --text:' +
+		theme.textColor +
+		'; --fontSize:' +
+		theme.fontSize +
+		'px'}
+>
+	<Header />
 
-<div class="site-content" style={'--site-bg:' + hexToRGB(palettes[theme][3], 0.25) + "; --site-font:" + fonts[theme]}>
-	<Header bind:theme />
-
-	<div class="main-slot-viewer">
+	<div class="main-slot-viewer" style={'--content-bg:' + hexToRGB(theme.contentBackground, 0.8)}>
 		<slot></slot>
 	</div>
 
-	<Footer bind:theme />
+	<Footer />
 </div>
 
 <style>
@@ -61,119 +126,121 @@
 		height: calc(100% - 20px);
 		width: 100%;
 		z-index: 0;
-		background-color: var(--site-bg);
 		border-radius: 10px;
 		font-family: var(--site-font);
+		overflow: hidden;
+		color: var(--text);
+		font-size: var(--fontSize);
 	}
 
 	.main-slot-viewer {
-		height: calc(100% - 140px);
+		height: calc(100% - 200px);
 		display: flex;
 		justify-content: center;
 		overflow: auto;
 		padding: 20px 10px;
+		background-color: var(--content-bg);
 	}
 
 	@font-face {
-        font-family: 'AmaticSC';
-        font-style: normal;
-        src: url("/fonts/AmaticSC-Bold.ttf");
-    }
+		font-family: 'AmaticSC';
+		font-style: normal;
+		src: url('/fonts/AmaticSC-Bold.ttf');
+	}
 
 	@font-face {
-        font-family: 'Caveat';
-        font-style: normal;
-        src: url("/fonts/Caveat-VariableFont_wght.ttf");
-    }
+		font-family: 'Caveat';
+		font-style: normal;
+		src: url('/fonts/Caveat-VariableFont_wght.ttf');
+	}
 
 	@font-face {
-        font-family: 'Cinzel';
-        font-style: normal;
-        src: url("/fonts/cinzel-VariableFont_wght.ttf");
-    }
+		font-family: 'Cinzel';
+		font-style: normal;
+		src: url('/fonts/cinzel-VariableFont_wght.ttf');
+	}
 
 	@font-face {
-        font-family: 'Fascinate';
-        font-style: normal;
-        src: url("/fonts/FascinateInline-Regular.ttf");
-    }
+		font-family: 'Fascinate';
+		font-style: normal;
+		src: url('/fonts/FascinateInline-Regular.ttf');
+	}
 
 	@font-face {
-        font-family: 'JF Shadow';
-        font-style: normal;
-        src: url("/fonts/JacquesFrancoisShadow-Regular.ttf");
-    }
+		font-family: 'JF Shadow';
+		font-style: normal;
+		src: url('/fonts/JacquesFrancoisShadow-Regular.ttf');
+	}
 
 	@font-face {
-        font-family: 'Kolker Brush';
-        font-style: normal;
-        src: url("/fonts/KolkerBrush-Regular.ttf");
-    }
+		font-family: 'Kolker Brush';
+		font-style: normal;
+		src: url('/fonts/KolkerBrush-Regular.ttf');
+	}
 
 	@font-face {
-        font-family: 'Lacquer';
-        font-style: normal;
-        src: url("/fonts/Lacquer-Regular.ttf");
-    }
+		font-family: 'Lacquer';
+		font-style: normal;
+		src: url('/fonts/Lacquer-Regular.ttf');
+	}
 
 	@font-face {
-        font-family: 'Noto Sans';
-        font-style: normal;
-        src: url("/fonts/NotoSans-VariableFont_wdth,wght.ttf");
-    }
+		font-family: 'Noto Sans';
+		font-style: normal;
+		src: url('/fonts/NotoSans-VariableFont_wdth,wght.ttf');
+	}
 
 	@font-face {
-        font-family: 'Orbitron';
-        font-style: normal;
-        src: url("/fonts/Orbitron-VariableFont_wght.ttf");
-    }
+		font-family: 'Orbitron';
+		font-style: normal;
+		src: url('/fonts/Orbitron-VariableFont_wght.ttf');
+	}
 
 	@font-face {
-        font-family: 'Plaster';
-        font-style: normal;
-        src: url("/fonts/Plaster-Regular.ttf");
-    }
+		font-family: 'Plaster';
+		font-style: normal;
+		src: url('/fonts/Plaster-Regular.ttf');
+	}
 
 	@font-face {
-        font-family: 'Playwright CU';
-        font-style: normal;
-        src: url("/fonts/PlaywriteCU-VariableFont_wght.ttf");
-    }
+		font-family: 'Playwright CU';
+		font-style: normal;
+		src: url('/fonts/PlaywriteCU-VariableFont_wght.ttf');
+	}
 
 	@font-face {
-        font-family: 'Protest Guerrilla';
-        font-style: normal;
-        src: url("/fonts/ProtestGuerrilla-Regular.ttf");
-    }
+		font-family: 'Protest Guerrilla';
+		font-style: normal;
+		src: url('/fonts/ProtestGuerrilla-Regular.ttf');
+	}
 
 	@font-face {
-        font-family: 'Broken Fax';
-        font-style: normal;
-        src: url("/fonts/RubikBrokenFax-Regular.ttf");
-    }
+		font-family: 'Broken Fax';
+		font-style: normal;
+		src: url('/fonts/RubikBrokenFax-Regular.ttf');
+	}
 
 	@font-face {
-        font-family: 'Sankofa Display';
-        font-style: normal;
-        src: url("/fonts/SankofaDisplay-Regular.ttf");
-    }
+		font-family: 'Sankofa Display';
+		font-style: normal;
+		src: url('/fonts/SankofaDisplay-Regular.ttf');
+	}
 
 	@font-face {
-        font-family: 'Sofadi One';
-        font-style: normal;
-        src: url("/fonts/SofadiOne-Regular.ttf");
-    }
+		font-family: 'Sofadi One';
+		font-style: normal;
+		src: url('/fonts/SofadiOne-Regular.ttf');
+	}
 
 	@font-face {
-        font-family: 'Warnes';
-        font-style: normal;
-        src: url("/fonts/Warnes-Regular.ttf");
-    }
+		font-family: 'Warnes';
+		font-style: normal;
+		src: url('/fonts/Warnes-Regular.ttf');
+	}
 
 	@font-face {
-        font-family: 'Wavefont';
-        font-style: normal;
-        src: url("/fonts/Wavefont-VariableFont_ROND,YELA,wght.ttf");
-    }
-
+		font-family: 'Wavefont';
+		font-style: normal;
+		src: url('/fonts/Wavefont-VariableFont_ROND,YELA,wght.ttf');
+	}
 </style>

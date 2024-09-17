@@ -79,7 +79,7 @@ export default function newFloater(
     }
 }
 
-export function generateRandomFloater(icon:string, color: string, theme: "coder" | "beach" | "winter", windowWidth: number, windowHeight: number): floaterObject {
+export function generateRandomFloater(icon:string, color: string, theme: string, windowWidth: number, windowHeight: number): floaterObject {
     const size = Math.max(Math.floor(Math.random() * 200), 75) 
     
     switch (theme) {

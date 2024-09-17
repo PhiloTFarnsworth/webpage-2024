@@ -2,23 +2,30 @@
 	export let icon: string;
 </script>
 
-<svg><use href={'#fa-symbol-' + icon}></use></svg>
+<svg>
+	<use href={'#fa-symbol-' + icon}></use>
+</svg>
 
 <style>
 	svg {
 		position: absolute;
 		top: var(--top);
 		left: var(--left);
-		width: var(--width);
-		height: var(--height);
+		right: var(--right);
+		bottom: var(--bottom);
+		width: var(--size);
+		height: var(--size);
 		color: var(--color);
 		opacity: var(--opacity);
+		transform: rotate(var(--rotation));
 		animation:
 			horizontal var(--horizontalDuration) linear infinite var(--horizontalDirection),
 			vertical var(--verticalDuration) linear infinite var(--verticalDirection),
 			spin var(--spinDuration) linear infinite,
 			pushLeft var(--pushLeftDuration) ease-in-out infinite,
 			pushDown var(--pushDownDuration) ease-in-out infinite,
+			pushUp var(--pushUpDuration) ease-in-out infinite,
+			pushRight var(--pushRightDuration) ease-in-out infinite,
 			rainbow var(--rainbowDuration) ease-in-out infinite,
 			grow var(--growDuration) ease-in-out infinite,
             opacity var(--opacityDuration) ease-in-out infinite;
@@ -63,6 +70,18 @@
 		}
 	}
 
+	@keyframes pushRight {
+		50% {
+			margin-right: var(--pushRightForce);
+		}
+	}
+
+	@keyframes pushUp {
+		50% {
+			margin-bottom: var(--pushUpForce);
+		}
+	}
+
 	@keyframes rainbow {
 		20% {
 			color: red;
@@ -83,8 +102,8 @@
 
 	@keyframes grow {
 		50% {
-			height: calc(var(--height) * var(--growScale));
-            width: calc(var(--width) * var(--growScale))
+			height: calc(var(--size) * var(--growScale));
+            width: calc(var(--size) * var(--growScale))
 		}
 	}
 

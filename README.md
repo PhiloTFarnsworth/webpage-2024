@@ -36,3 +36,9 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## TODO
+~ Hook Up Style Form
+~ Allow users to create custom backgrounds through style form
+Import/export backgrounds
+~ Add content!  

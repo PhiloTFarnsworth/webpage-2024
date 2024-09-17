@@ -1,69 +1,85 @@
 <script lang="ts">
-	import { hexToRGB, palettes } from "$lib/utilities/palettes";
-
+	import { browser } from '$app/environment';
+	import { hexToRGB } from '$lib/utilities/palettes';
+	import { getContext } from 'svelte';
 	export function thisYear(): Number {
 		return new Date(Date.now()).getFullYear();
 	}
 
-	export let theme: 'coder' | 'beach' | 'winter'
+	const themeContext = getContext('themeContext');
+
+	let theme;
+	let themes;
+	themeContext.subscribe((value) => {
+		theme = value.theme;
+		themes = value.themes;
+	});
+
+	function updateTheme(e) {
+		console.log(e)
+		if (browser)
+		window.dispatchEvent(
+			new CustomEvent('themeChange', {
+				bubbles: false,
+				detail: themes.find((t) => t.id == e.target.value)
+			})
+		);
+	}
 </script>
 
-<footer style={"--footer-bg:" + hexToRGB(palettes[theme][9], .8) + "; --button-bg:" + palettes[theme][1]}>
-	<div class="footer-links">
-		<a href="https://github.com/PhiloTFarnsworth">
-			<span aria-label="My Github" class="fa-brands fa-github icon"></span>
-		</a>
-		<a href="https://www.linkedin.com/in/michael-gardner-az">
-			<span aria-label="My LinkedIn" class="fa-brands fa-linkedin icon"></span>
-		</a>
-	</div>
+{#if theme}
+	<footer
+		style={'--footer-bg:' +
+			hexToRGB(theme.handleColor, 0.6) +
+			'; --button-bg:' +
+			theme.contentBackground}
+	>
+		<div class="footer-links">
+			<a href="https://github.com/PhiloTFarnsworth">
+				<span aria-label="My Github" class="fa-brands fa-github icon"></span>
+			</a>
+			<a href="https://www.linkedin.com/in/michael-gardner-az">
+				<span aria-label="My LinkedIn" class="fa-brands fa-linkedin icon"></span>
+			</a>
+		</div>
 
+		<form>
+			<select on:input={updateTheme} value={theme.id}>
+				{#each themes as themeObject}
+					<option value={themeObject.id}>{themeObject.name}</option>
+				{/each}
+			</select>
+		</form>
 
-	<form>
-		<select
-			bind:value={theme}
-		>
-			<option value="coder">
-				Coder &#xf120
-			</option>
-			<option value="beach">
-				Beach &#xf5ca
-			</option>
-			<option value="winter">
-				Winter &#xf7d0
-			</option>
-		</select>
-	</form>
-
-	<p>
-		<span class="fa-regular fa-copyright icon-small"></span> 2024{thisYear() !== 2024
-			? '-' + thisYear()
-			: ''} Michael Gardner
-	</p>
-</footer>
+		<p>
+			<span class="fa-regular fa-copyright icon-small"></span> 2024{thisYear() !== 2024
+				? '-' + thisYear()
+				: ''} Michael Gardner
+		</p>
+	</footer>
+{/if}
 
 <style>
-	
 	@font-face {
 		font-family: 'Font Awesome';
-        font-style: normal;
-        src: url("/fonts/fa-solid-900.woff2");
+		font-style: normal;
+		src: url('/fonts/fa-solid-900.woff2');
 	}
 
 	select {
 		height: 45px;
 		width: 100px;
-		font-family: "Font Awesome";
+		font-family: 'Font Awesome';
 		color: var(--button-bg);
 		border-radius: 10px;
 	}
 
 	option {
-		font-family: "Font Awesome";
+		font-family: 'Font Awesome';
 	}
 
 	option:not(:checked) {
-		color: black
+		color: black;
 	}
 
 	footer {
