@@ -11,9 +11,7 @@
 	});
 
 	function createNewTheme() {
-		console.log("click")
 		themeContext.update((t) => {
-			console.log(t)
 			const newId = t.themes.length
 			return {
 				themes: [

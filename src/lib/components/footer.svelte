@@ -16,7 +16,6 @@
 	});
 
 	function updateTheme(e) {
-		console.log(e)
 		if (browser)
 		window.dispatchEvent(
 			new CustomEvent('themeChange', {

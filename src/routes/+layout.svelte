@@ -81,9 +81,6 @@
 			};
 		});
 	}
-
-	$: console.log(theme)
-	$: console.log(theme.font)
 </script>
 
 <svelte:window
