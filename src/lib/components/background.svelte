@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import Floater from './floater.svelte';
+	import Floater from './layout/floater.svelte';
 	const themeContext = getContext('themeContext');
 
 	let theme;

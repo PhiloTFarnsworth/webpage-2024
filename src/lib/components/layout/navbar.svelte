@@ -6,8 +6,9 @@
 
 <nav>
 	<a href="{base}/">Home</a>
-	<a href="{base}/projects">Projects</a>
 	<a href="{base}/settings">Settings</a>
+	<a href="{base}/peace">Peace</a>
+	<a href="{base}/about">About</a>
 </nav>
 
 <style>
@@ -20,5 +21,7 @@
 
 	nav a {
 		font-size: x-large;
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 </style>

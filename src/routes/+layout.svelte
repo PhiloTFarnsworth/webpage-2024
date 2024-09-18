@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Background from '$lib/components/background.svelte';
 	import DynamicFontAwesome from '$lib/components/dynamicFontAwesome.svelte';
-	import Footer from '$lib/components/footer.svelte';
-	import Header from '$lib/components/header.svelte';
+	import Footer from '$lib/components/layout/footer.svelte';
+	import Header from '$lib/components/layout/header.svelte';
 	import coder from '$lib/assets/coder.json';
 	import winter from '$lib/assets/winter.json';
 	import beach from '$lib/assets/beach.json';

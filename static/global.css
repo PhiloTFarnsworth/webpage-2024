@@ -35,3 +35,9 @@ input {
     height: 32px;
     font-size: 18px;
 }
+
+input[type="color"] {
+    height: 38px;
+}
+
+

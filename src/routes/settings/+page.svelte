@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 	import { getContext } from 'svelte';
-	import LayoutForm from '$lib/components/layoutForm.svelte';
+	import LayoutForm from '$lib/components/forms/layoutForm.svelte';
 	const themeContext = getContext('themeContext');
 
 	let theme;
@@ -12,26 +12,28 @@
 
 	function createNewTheme() {
 		themeContext.update((t) => {
-			const newId = t.themes.length
+			const newId = t.themes.length;
 			return {
 				themes: [
 					...t.themes,
 					{
 						id: newId,
 						name: 'custom',
+						themeIcon: 'anchor',
 						background: '#111111',
 						contentBackground: '#EEEEEE',
 						handleColor: '#DDDDDD',
 						textColor: '#000000',
-						fontSize: "16px",
+						fontSize: '16px',
 						styles: [
 							{
 								id: 0,
 								name: 'custom',
-								icons: ['aviato'],
+								icons: ['ship'],
 								density: 1,
 								size: 500,
 								colors: ['#FF00FF'],
+								initialOpacity: 100
 							}
 						]
 					}
@@ -39,20 +41,22 @@
 				theme: {
 					id: newId,
 					name: 'custom',
+					themeIcon: 'anchor',
 					background: '#111111',
 					contentBackground: '#EEEEEE',
 					handleColor: '#DDDDDD',
 					textColor: '#000000',
-					font: "monospace",
+					font: 'monospace',
 					fontSize: 16,
 					styles: [
 						{
 							id: 0,
 							density: 1,
 							name: 'custom',
-							icons: ['aviato'],
+							icons: ['ship'],
 							size: 500,
 							colors: ['#FF00FF'],
+							initialOpacity: 100
 						}
 					]
 				}
@@ -61,8 +65,8 @@
 	}
 </script>
 
-<button class="create-new" on:click={createNewTheme}>Create New!</button>
 <div class="settings-container">
+	<button class="create-new" on:click={createNewTheme}>Create New!</button>
 	<h2>Background Settings</h2>
 	<form>
 		<h3>{theme.name}</h3>
@@ -74,10 +78,8 @@
 
 <style>
 	.create-new {
-		position: absolute;
-		right: 50px;
-		top: 150px;
-		width: 75px;
+		width: 100%;
+		height: 30px;
 	}
 
 	.settings-container {

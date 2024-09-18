@@ -1,9 +1,10 @@
-<script>
+<script lang="ts">
     export let id
     export let name
+    export let reverse: Boolean | undefined;
 </script>
 
-<div class="form-group">
+<div class="form-group" style={"--reverse:" + (reverse ? "column-reverse" : "column")}>
     <label for={id}>{name}</label>
     <slot />
 </div>
@@ -13,7 +14,7 @@
         padding-bottom: 5px;
         margin-bottom: 5px;
         display: flex;
-        flex-direction: column;
+        flex-direction: var(--reverse);
         text-align: center;
         justify-content: center;
         align-items: center;
