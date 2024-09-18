@@ -11,14 +11,14 @@
 </script>
 
 <div style={'--header-bg:' + hexToRGB(theme.handleColor, 0.6)} class="site-header">
-	<svg class="icon" style={'--icon-color:' + theme.background}>
+	<svg class="icon" style={'--icon-color:' + theme.fontColor}>
 		<use href={'#fa-symbol-' + theme.themeIcon}></use>
 	</svg>
 	<div class="nav-combo">
 		<h1>Mike G '24</h1>
 		<Navbar />
 	</div>
-	<svg class="icon" style={'--icon-color:' + theme.background}>
+	<svg class="icon" style={'--icon-color:' + theme.fontColor}>
 		<use href={'#fa-symbol-' + theme.themeIcon}></use>
 	</svg>
 </div>

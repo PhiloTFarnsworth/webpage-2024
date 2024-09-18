@@ -6,12 +6,15 @@
 	import coder from '$lib/assets/coder.json';
 	import winter from '$lib/assets/winter.json';
 	import beach from '$lib/assets/beach.json';
+	import rainy from '$lib/assets/rainy.json';
+	import space from '$lib/assets/space.json';
+	import metro from '$lib/assets/city.json'
 	import { hexToRGB } from '$lib/utilities/palettes';
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 
 	const themeContext = writable();
-	$: themeContext.set({ themes: [coder, winter, beach], theme: winter });
+	$: themeContext.set({ themes: [coder, rainy, metro, winter, beach, space], theme: coder });
 
 	setContext('themeContext', themeContext);
 
@@ -94,6 +97,8 @@
 		styleUpdate(e.detail);
 	}}
 />
+
+<i data-fa-symbol={'fa-symbol-xmark'} class={'fa-solid fa-xmark'}></i>
 
 <DynamicFontAwesome />
 

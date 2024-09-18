@@ -17,6 +17,8 @@
 		flex-wrap: wrap;
 		justify-content: space-around;
 		align-items: center;
+		background-color: white;
+		border-radius: 5px;
 	}
 
 	nav a {

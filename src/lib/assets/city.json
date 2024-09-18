@@ -1,0 +1,147 @@
+{
+    "id": 5,
+    "name": "metro",
+    "themeIcon": "martini-glass-citrus",
+    "background": "#AAEEEE",
+    "contentBackground": "#33AAAA",
+    "handleColor": "#AA0000",
+    "textColor": "#FFFFFF",
+    "font": "corbel",
+    "fontSize": 16,
+    "styles": [
+        {
+            "id": 0,
+            "name": "mountains",
+            "icons": [
+                "mountain-city"
+            ],
+            "size": 400,
+            "density": 1,
+            "bottom": 110,
+            "left": -75,
+            "colors": [
+                "#AA0000",
+                "#00AA00",
+                "#0000AA"
+            ],
+            "initialOpacity": 100
+        },
+        {
+            "id": 1,
+            "name": "more city",
+            "icons": [
+                "city"
+            ],
+            "size": 400,
+            "density": 1,
+            "bottom": 110,
+            "left": 325,
+            "colors": [
+                "#AA0000",
+                "#00AA00",
+                "#0000AA"
+            ],
+            "initialOpacity": 100
+        },
+        {
+            "id": 2,
+            "name": "even more city",
+            "icons": [
+                "building"
+            ],
+            "size": 400,
+            "density": 1,
+            "bottom": 145,
+            "left": 675,
+            "colors": [
+                "#AA0000",
+                "#00AA00",
+                "#0000AA"
+            ],
+            "initialOpacity": 100
+        },
+        {
+            "id": 3,
+            "name": "city tree",
+            "icons": [
+                "tree-city"
+            ],
+            "size": 400,
+            "density": 1,
+            "bottom": 110,
+            "left": 1050,
+            "colors": [
+                "#AA0000",
+                "#00AA00",
+                "#0000AA"
+            ],
+            "initialOpacity": 100
+        },
+        {
+            "id": 4,
+            "name": "city 2",
+            "icons": [
+                "city"
+            ],
+            "size": 400,
+            "density": 1,
+            "bottom": 110,
+            "left": 1430,
+            "colors": [
+                "#AA0000",
+                "#00AA00",
+                "#0000AA"
+            ],
+            "initialOpacity": 100
+        },
+        {
+            "id": 5,
+            "name": "tree city 2",
+            "icons": [
+                "tree-city"
+            ],
+            "size": 400,
+            "density": 1,
+            "bottom": 110,
+            "left": 1830,
+            "colors": [
+                "#AA0000",
+                "#00AA00",
+                "#0000AA"
+            ],
+            "initialOpacity": 100
+        },
+        {
+            "id": 6,
+            "name": "trucks",
+            "icons": [
+                "truck"
+            ],
+            "size": 50,
+            "density": 1,
+            "bottom": 95,
+            "left": 0,
+            "colors": [
+                "#FF8C00"
+            ],
+            "initialOpacity": 100,
+            "horizontalDuration": 8,
+            "horizontalDirection": "normal"
+        },
+        {
+            "id": 7,
+            "name": "sun",
+            "icons": [
+                "sun"
+            ],
+            "size": 200,
+            "density": 1,
+            "top": 125,
+            "left": 50,
+            "colors": [
+                "#FF8C00"
+            ],
+            "initialOpacity": 100
+        }
+    ]
+}

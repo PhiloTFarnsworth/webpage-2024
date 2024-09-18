@@ -55,7 +55,17 @@
 		<div class="display-panel">
 			{#each style.icons as icon}
 				<div class="icon-container">
-					<button class="delete-item" on:click={(e) => {e.preventDefault(); style.icons = style.icons.filter(c => c != icon)}}>X</button>
+					<button
+						class="delete-item"
+						on:click={(e) => {
+							e.preventDefault();
+							style.icons = style.icons.filter((c) => c != icon);
+						}}
+					>
+						<svg>
+							<use href={'#fa-symbol-xmark'}></use>
+						</svg>
+					</button>
 					<p>{icon}</p>
 					<svg class="icon" style="margin: 5px;">
 						<use href={'#fa-symbol-' + icon}></use>
@@ -64,8 +74,18 @@
 			{/each}
 		</div>
 		<LabelCombo id={'form-style-icon-name' + theme.id + '-' + style.id} name="Add Icon">
-			<input type="text" id={'form-style-icon-name' + theme.id + '-' + style.id} bind:value={addIcon} />
-			<button class="add-button" on:click={(e) => {e.preventDefault(); if (addIcon) style.icons = [...style.icons, addIcon]}}>Add</button>
+			<input
+				type="text"
+				id={'form-style-icon-name' + theme.id + '-' + style.id}
+				bind:value={addIcon}
+			/>
+			<button
+				class="add-button"
+				on:click={(e) => {
+					e.preventDefault();
+					if (addIcon) style.icons = [...style.icons, addIcon];
+				}}>Add</button
+			>
 		</LabelCombo>
 	</details>
 	<details>
@@ -80,7 +100,17 @@
 		<div class="display-panel">
 			{#each style.colors as color}
 				<div class="swatch-container">
-					<button class="delete-item" on:click={(e) => {e.preventDefault(); style.colors = style.colors.filter(c => c != color)}}>X</button>
+					<button
+						class="delete-item"
+						on:click={(e) => {
+							e.preventDefault();
+							style.colors = style.colors.filter((c) => c != color);
+						}}
+					>
+						<svg>
+							<use href={'#fa-symbol-xmark'}></use>
+						</svg>
+					</button>
 					<span class="color-swatch" style={'--color:' + color + ';'}></span>
 					<p>{color}</p>
 				</div>
@@ -88,7 +118,13 @@
 		</div>
 		<LabelCombo id={'form-style-add-color' + theme.id + '-' + style.id} name="Add Color">
 			<input type="color" bind:value={addColor} />
-			<button class="add-button" on:click={(e) => {e.preventDefault(); if (addColor) style.colors = [...style.colors, addColor]}}>Add</button>
+			<button
+				class="add-button"
+				on:click={(e) => {
+					e.preventDefault();
+					if (addColor) style.colors = [...style.colors, addColor];
+				}}>Add</button
+			>
 		</LabelCombo>
 	</details>
 </div>
@@ -336,12 +372,13 @@
 		align-items: baseline;
 		width: 100%;
 	}
-	
+
 	.swatch-container {
 		display: flex;
 		justify-content: space-evenly;
 		align-items: center;
 		height: 120px;
+		position: relative;
 	}
 
 	.color-swatch {
@@ -366,6 +403,8 @@
 		justify-content: space-evenly;
 		align-items: center;
 		padding: 5px;
+
+		position: relative;
 	}
 
 	.icon-container p {
@@ -403,6 +442,25 @@
 	.add-button {
 		width: 100px;
 		margin-top: 5px;
+	}
+
+	.delete-item {
+		position: absolute;
+		width: 80px;
+		height: 100px;
+		opacity: 0%;
+		background-color: transparent;
+		border: none;
+		border-radius: 5px;
+	}
+
+	.delete-item:hover {
+		opacity: 50%;
+	}
+
+	.delete-item svg {
+		height: 100%;
+		width: 100%;
 	}
 
 	span > .color-preview > .icon {

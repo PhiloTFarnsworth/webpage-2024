@@ -1,0 +1,82 @@
+{
+    "id": 4,
+    "name": "space",
+    "themeIcon": "rocket",
+    "background": "#111111",
+    "contentBackground": "#441144",
+    "handleColor": "#0011EE",
+    "textColor": "#FFFFFF",
+    "font": "Broken Fax",
+    "fontSize": 16,
+    "styles": [
+        {
+            "id": 0,
+            "name": "stars",
+            "icons": [
+                "star"
+            ],
+            "size": [10,20],
+            "density": 200,
+            "top": [0,"max"],
+            "left": [0, "max"],
+            "colors": [
+                "#EEEE11" 
+            ],
+            "initialOpacity": 100,
+            "opacityFlareDuration": [0.5, 2],
+            "opacityFlareIntensity": [50, 60]
+        },
+        {
+            "id": 1,
+            "name": "meteors",
+            "icons": [
+                "meteor"
+            ],
+            "size": 30,
+            "density": 4,
+            "top": [25, 200],
+            "left": 0,
+            "colors": [
+                "#EEDD11" 
+            ],
+            "initialOpacity": 100,
+            "initialRotation": 230,
+            "horizontalDuration": [3, 20],
+            "horizontalDirection": "normal"
+        },
+        {
+            "id": 2,
+            "name": "rocket",
+            "icons": [
+                "rocket"
+            ],
+            "size": 300,
+            "density": 1,
+            "bottom": 125,
+            "left": 50,
+            "colors": [
+                "#EE1111" 
+            ],
+            "initialOpacity": 100,
+            "pushLeftDuration": [1, 3],
+            "pushLeftForce": [0, 50],
+            "pushDownDuration": [1, 3],
+            "pushDownForce": [0, 50]
+        },
+        {
+            "id": 3,
+            "name": "moon",
+            "icons": [
+                "moon"
+            ],
+            "size": 200,
+            "density": 1,
+            "top": 125,
+            "right": 50,
+            "colors": [
+                "#EEEE11" 
+            ],
+            "initialOpacity": 100
+        }
+    ]
+}

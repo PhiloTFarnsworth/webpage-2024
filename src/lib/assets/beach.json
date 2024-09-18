@@ -3,9 +3,9 @@
     "name": "beach",
     "themeIcon": "umbrella-beach",
     "themeIconUnicode": "&#xf5ca;",
-    "background": "#EEEEEE",
-    "contentBackground": "#FFFF00",
-    "handleColor": "#7FFFD4",
+    "background": "#DDFFFF",
+    "contentBackground": "#00EEFF",
+    "handleColor": "#FFFF44",
     "textColor": "#000000",
     "font": "Warnes",
     "fontSize": 16,
@@ -53,7 +53,7 @@
             "rainbowDuration": 0,
             "growDuration": [3, 20],
             "growScale": [0.5, 1.5],
-            "opacityFlareDuration": [0, 5],
+            "opacityFlareDuration": [2, 5],
             "opacityFlareIntensity": [10, 60]
         },
         {

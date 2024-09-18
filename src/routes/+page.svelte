@@ -35,7 +35,7 @@
                 let next = current + 1 >= available.length ? available[0] : available[current + 1]
                 themeChange(themes.find(t => t.id === next))
             }
-        }, 5000)
+        }, 10000)
     }
 </script>
 <div class="home-panel">
