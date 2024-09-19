@@ -128,6 +128,7 @@
 </div>
 <div class="style-choice-container">
 	<label>Styles</label>
+	<button>Create New</button>
 	<div class="style-button-container">
 		{#each theme.styles as style}
 			<button

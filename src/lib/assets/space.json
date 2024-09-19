@@ -46,25 +46,6 @@
         },
         {
             "id": 2,
-            "name": "rocket",
-            "icons": [
-                "rocket"
-            ],
-            "size": 300,
-            "density": 1,
-            "bottom": 125,
-            "left": 50,
-            "colors": [
-                "#EE1111" 
-            ],
-            "initialOpacity": 100,
-            "pushLeftDuration": [1, 3],
-            "pushLeftForce": [0, 50],
-            "pushDownDuration": [1, 3],
-            "pushDownForce": [0, 50]
-        },
-        {
-            "id": 3,
             "name": "moon",
             "icons": [
                 "moon"
@@ -77,6 +58,25 @@
                 "#EEEE11" 
             ],
             "initialOpacity": 100
+        },
+        {
+            "id": 3,
+            "name": "rocket",
+            "icons": [
+                "rocket"
+            ],
+            "size": 250,
+            "density": 1,
+            "bottom": 125,
+            "left": 50,
+            "colors": [
+                "#EE1111" 
+            ],
+            "initialOpacity": 100,
+            "pushLeftDuration": [1, 3],
+            "pushLeftForce": [0, 50],
+            "pushDownDuration": [1, 3],
+            "pushDownForce": [0, 50]
         }
     ]
 }

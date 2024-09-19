@@ -11,18 +11,16 @@
     "styles": [
         {
             "id": 0,
-            "name": "mountains",
+            "name": "sun",
             "icons": [
-                "mountain-city"
+                "sun"
             ],
-            "size": 400,
+            "size": 200,
             "density": 1,
-            "bottom": 110,
-            "left": -75,
+            "top": 125,
+            "left": 50,
             "colors": [
-                "#AA0000",
-                "#00AA00",
-                "#0000AA"
+                "#FF8C00"
             ],
             "initialOpacity": 100
         },
@@ -130,18 +128,21 @@
         },
         {
             "id": 7,
-            "name": "sun",
+            "name": "mountains",
             "icons": [
-                "sun"
+                "mountain-city"
             ],
-            "size": 200,
+            "size": 400,
             "density": 1,
-            "top": 125,
-            "left": 50,
+            "bottom": 110,
+            "left": -75,
             "colors": [
-                "#FF8C00"
+                "#AA0000",
+                "#00AA00",
+                "#0000AA"
             ],
             "initialOpacity": 100
         }
+
     ]
 }

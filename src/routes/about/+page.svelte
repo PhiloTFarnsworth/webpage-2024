@@ -3,6 +3,13 @@
 </script>
 
 <div class="projects-container">
+	<h2>Webpage 2024</h2>
+	<p>Webpage 2024 is a website designed to showcase my skills in creating CRUD applications and developing visually appealing interfaces, with attention to mobile responsiveness. This is also my first published Svelte/SvelteKit app.</p>
+	<p>In my opinion, I pretty much aced it.  If you disagree, feel free to customize the page until you feel differently.</p>
+
+	<h2>Michael Gardner</h2>
+	<p>Michael Gardner is a pretty rad developer living in Tucson, Arizona.  You can contact him at: <a href="mailto:IDoDevThings@Gmail.com">IDoDevThings@Gmail.com</a>.</p>
+
 	<h2>Projects</h2>
 	<p>Below are a collection of projects that I have created in the past couple of years:</p>
 
@@ -34,5 +41,9 @@
 		border-radius: 10px;
 		padding: 5px;
 		overflow: auto;
+	}
+
+	.projects-container p{
+		text-align: center;
 	}
 </style>
