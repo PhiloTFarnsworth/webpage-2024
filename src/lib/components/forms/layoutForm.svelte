@@ -5,6 +5,8 @@
 	import fontConfig from '$lib/assets/fonts.json';
 	import { onMount } from 'svelte';
 	import allFA from '$lib/assets/allFA.json';
+	import Background from '../background.svelte';
+	import { json } from '@sveltejs/kit';
 
 	let allIcons = allFA.fontAwesome;
 	export let theme;
@@ -20,6 +22,32 @@
 			fonts = [...fonts, ...fontConfig.windows].sort();
 		}
 	});
+
+	function removeStyle() {
+		theme = {
+			...theme,
+			styles: theme.styles.filter((s) => s.id !== selectedStyle)
+		};
+		selectedStyle = undefined;
+	}
+
+	function addStyle() {
+		theme = {
+			...theme,
+			styles: [
+				...theme.styles,
+				{
+					id: Math.max(...theme.styles.map((s) => s.id)) + 1, //Don't try this at home
+					density: 1,
+					name: 'custom',
+					icons: ['ship'],
+					size: 500,
+					colors: ['#FF00FF'],
+					initialOpacity: 100
+				}
+			]
+		};
+	}
 
 	$: if (browser)
 		window.dispatchEvent(new CustomEvent('configChange', { bubbles: false, detail: theme }));
@@ -66,15 +94,15 @@
 			</svg>
 		</div>
 		<div class="theme-icon-container">
-		<LabelCombo id={'form-font' + theme.id} name="Font">
-			<input
-				type="text"
-				id={'form-font' + theme.id}
-				bind:value={theme.font}
-				list={'all-fonts-list'}
-			/>
-		</LabelCombo>
-		<span style="font-size: 32px;">ABC</span>
+			<LabelCombo id={'form-font' + theme.id} name="Font">
+				<input
+					type="text"
+					id={'form-font' + theme.id}
+					bind:value={theme.font}
+					list={'all-fonts-list'}
+				/>
+			</LabelCombo>
+			<span style="font-size: 32px;">ABC</span>
 		</div>
 		<LabelCombo id={'form-font-size' + theme.id} name="Font Size">
 			<input type="number" id={'form-font-size' + theme.id} bind:value={theme.fontSize} />
@@ -128,7 +156,7 @@
 </div>
 <div class="style-choice-container">
 	<label>Styles</label>
-	<button>Create New</button>
+	<button on:click={addStyle}>Create New</button>
 	<div class="style-button-container">
 		{#each theme.styles as style}
 			<button
@@ -142,6 +170,9 @@
 			>
 		{/each}
 	</div>
+	{#if selectedStyle || selectedStyle === 0}
+		<button on:click={removeStyle}>Delete Style</button>
+	{/if}
 </div>
 
 {#each theme.styles as style}
@@ -208,7 +239,7 @@
 
 	.style-button {
 		min-height: 30px;
-		width: 125px
+		width: 125px;
 	}
 
 	summary span {

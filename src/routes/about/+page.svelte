@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Project from '$lib/components/project.svelte';
+	import coolDude from '$lib/assets/CoolGuySmaller.png'
 </script>
 
 <div class="projects-container">
@@ -7,6 +8,7 @@
 	<p>Webpage 2024 is a website designed to showcase my skills in creating CRUD applications and developing visually appealing interfaces, with attention to mobile responsiveness. This is also my first published Svelte/SvelteKit app.</p>
 	<p>In my opinion, I pretty much aced it.  If you disagree, feel free to customize the page until you feel differently.</p>
 
+	<img src={coolDude} alt="Yours truly, photographically represented."/>
 	<h2>Michael Gardner</h2>
 	<p>Michael Gardner is a pretty rad developer living in Tucson, Arizona.  You can contact him at: <a href="mailto:IDoDevThings@Gmail.com">IDoDevThings@Gmail.com</a>.</p>
 
