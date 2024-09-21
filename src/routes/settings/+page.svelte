@@ -139,7 +139,7 @@
 </script>
 
 <dialog id="export-theme-dialog" class="tool-dialog">
-	<p><a href="mailto:IDoDevThings@gmail.com">Email Me Your Theme!</a></p>
+	<p>This a JSON representation of the theme and background animations! <a href="mailto:IDoDevThings@gmail.com">Email Me Your Theme!</a></p>
 	<textarea class="tool-text">{JSON.stringify(theme, null, 2)}</textarea>
 	<button class="create-new" on:click={dismissExport}>Dismiss</button>
 </dialog>
@@ -174,12 +174,13 @@
 		</p>
 		<textarea class="tool-text-import" id="import-text-area" />
 	</div>
-	<button class="create-new" on:click={importTheme}>Import!</button>
+	<button on:click={importTheme}>Import!</button>  I don't think anyone is going to miss this feature
 </dialog>
 
 <div class="settings-container">
-	<button class="create-new" on:click={createNewTheme}>Create New!</button>
-	<button on:click={showExport}>Export!</button> <button on:click={showImport}>Import!</button>
+	<button on:click={createNewTheme}>Create New!</button>
+	<button on:click={showExport}>Export!</button> 
+	<!-- <button on:click={showImport}>Import!</button> -->
 	<h2>Background Settings</h2>
 	<form>
 		<h3>{theme.name}</h3>
@@ -190,10 +191,6 @@
 </div>
 
 <style>
-	.create-new {
-		width: 100%;
-		height: 30px;
-	}
 
 	.settings-container {
 		background-color: rgba(240, 240, 240, 0.65);

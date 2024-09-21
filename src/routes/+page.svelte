@@ -35,11 +35,11 @@
                 let next = current + 1 >= available.length ? available[0] : available[current + 1]
                 themeChange(themes.find(t => t.id === next))
             }
-        }, 10000)
+        }, 5000)
     }
 </script>
 <div class="home-panel">
-    <h2>This is a {theme.name} place.</h2>
+    <h2>This is a <span style={"--font: " + theme.font}>{theme.name}</span> place.</h2>
 </div>
 
 <style>
@@ -52,5 +52,13 @@
         height: 100%;
     }
 
+    h2 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
 
+    h2 > span {
+        font-family: var(--font);
+        text-decoration: underline;
+        font-size: 40px;
+    }
 </style>

@@ -34,10 +34,20 @@ input {
     border-radius: 5px;
     height: 32px;
     font-size: 18px;
+    border: 1px solid #aaaaaa;
 }
 
 input[type="color"] {
     height: 38px;
+}
+
+button {
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    border: 1px solid #aaaaaa;
+    padding: 5px;
 }
 
 
