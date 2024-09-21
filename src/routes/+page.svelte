@@ -54,6 +54,8 @@
 
     h2 {
         font-family: Georgia, 'Times New Roman', Times, serif;
+        width: 100%;
+        text-align: center;
     }
 
     h2 > span {

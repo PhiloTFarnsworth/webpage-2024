@@ -1,46 +1,16 @@
+# Webpage-2024!
+
 [Check it Out!](https://philotfarnsworth.github.io/webpage-2024/)
 
-# create-svelte
+## What's it all about
+Webpage-2024 is yet another personal website, with the fun feature that the user can customize the theme of the website though the settings page.  Font, coloring, background svgs and animations are all available to be customized through a form that is hooked up to the current theme.  Users can also click the "Create New Theme" button and start from scratch.  Finally users can export their themes to JSON and maybe just email me something cool.
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## How's it built?
+Webpage 2024 is built with svelte-kit, which utilizes svelte files on the front end while organizing server side rendering through svelte-kit.  While there were some svelte specific patterns that took a little time to grok, for the most part I found it a pretty easy experience to iterate and get going.  I tried to keep the work on the site limited to a single week in my off time, and to that point I think I spent most of the time developing the 'theme' feature, which speaks to the ease in which I got going.
 
-## Creating a project
+That said, I do think I would need additional time to really think through how to optimize performance with server side rendering.  I definitely noticed some latency in opening the settings page, that perhaps if this was a single page app, I could mitigate through loading certain form components asynchronously.  So there's certainly definitely more to explore in svelte-kit, which I hope to do in future projects.  
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Deploying locally
+IF you want to mess around with this repo, feel free to download and deploy.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-
-## TODO
-~ Hook Up Style Form
-~ Allow users to create custom backgrounds through style form
-Import/export backgrounds
-~ Add content!  
+This is app is created with the create-svelte package, so once you have downloaded the repo, you can ```npm install``` and then run the command ```npm run dev```.  The app will then be available at ```http://localhost:5173/```.  Forms used in the settings page can be found in ```src/lib/components/forms```, while main theming functionality can be fount in the ```+layout.svelte``` in the routes directory, along with ```background.svelte``` and ```floater.svelte```.  
